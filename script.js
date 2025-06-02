@@ -5,19 +5,18 @@ function getRandomInt(max) {
 function getComputerChoice() {
     let choice = getRandomInt(3);
 
-    if (choice === 0) return "Rock";
-    else if (choice === 1) return "Paper";
-    else return "Scissors";
+    if (choice === 0) return "rock";
+    else if (choice === 1) return "paper";
+    else return "scissors";
 }
 
 function getHumanChoice() {
-    return prompt("Your choice: ", "Rock");
+    return prompt("Your choice: ", "Rock").toLowerCase();
 }
 
 function playRound() {
     console.log("Playing round...");
     
-
     let humanChoice = getHumanChoice();
     let computerChoice = getComputerChoice();
 
@@ -26,12 +25,12 @@ function playRound() {
 
     if (humanChoice === computerChoice) 
         return;
-    else if (humanChoice === "Rock") {
-        computerChoice === "Paper" ? computerScore++ : humanScore++;
-    } else if (humanChoice === "Paper") {
-        computerChoice === "Scissors" ? computerScore++ : humanScore++;
-    } else if (humanChoice === "Scissors") {
-        computerChoice === "Rock" ? computerScore++ : humanScore++;
+    else if (humanChoice === "rock") {
+        computerChoice === "paper" ? computerScore++ : humanScore++;
+    } else if (humanChoice === "paper") {
+        computerChoice === "scissors" ? computerScore++ : humanScore++;
+    } else if (humanChoice === "scissors") {
+        computerChoice === "rock" ? computerScore++ : humanScore++;
     }
 }
 
