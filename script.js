@@ -10,7 +10,10 @@ function getComputerChoice() {
     else return "Scissors";
 }
 
+function getHumanChoice() {
+    return prompt("Your choice: ", "Rock");
+}
+
 console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
+console.log(getHumanChoice());
 
