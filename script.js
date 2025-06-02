@@ -14,6 +14,30 @@ function getHumanChoice() {
     return prompt("Your choice: ", "Rock");
 }
 
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+function playRound() {
+    console.log("Playing round...");
+    
 
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+
+    console.log(`Human choice: ${humanChoice}`);
+    console.log(`Computer choice: ${computerChoice}`);
+
+    if (humanChoice === computerChoice) 
+        return;
+    else if (humanChoice === "Rock") {
+        computerChoice === "Paper" ? computerScore++ : humanScore++;
+    } else if (humanChoice === "Paper") {
+        computerChoice === "Scissors" ? computerScore++ : humanScore++;
+    } else if (humanChoice === "Scissors") {
+        computerChoice === "Rock" ? computerScore++ : humanScore++;
+    }
+}
+
+let computerScore = 0;
+let humanScore = 0;
+
+playRound()
+console.log(`Human score: ${humanScore}`);
+console.log(`Computer score: ${computerScore}`);
