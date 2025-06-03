@@ -41,7 +41,7 @@ function playGame() {
         let computerChoice = getComputerChoice();
         console.log(`Computer choice: ${computerChoice}`);
 
-        playRound(i, humanChoice, computerChoice);
+        playRound(humanChoice, computerChoice);
 
         console.log(`Current score:
         Human: ${humanScore}
@@ -53,3 +53,10 @@ let computerScore = 0;
 let humanScore = 0;
 
 playGame();
+
+if (humanScore > computerScore)
+    console.log("Game over. You win!");
+else if (humanScore < computerScore)
+    console.log("Game over. You lose!");
+else  
+    console.log("Game over. It's a draw...");
