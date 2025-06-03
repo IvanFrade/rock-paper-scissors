@@ -1,7 +1,9 @@
+// Helper function to get a random int in a 1-max range
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
+// Computer choice is randomized 
 function getComputerChoice() {
     let choice = getRandomInt(3);
 
@@ -12,9 +14,10 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     return prompt("Your choice: ", "Rock").toLowerCase();
+    // TOOD: error handling
 }
 
-function playRound(n, humanChoice, computerChoice) {
+function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice)
         return;
     else if (humanChoice === "rock")
@@ -25,6 +28,7 @@ function playRound(n, humanChoice, computerChoice) {
         computerChoice === "rock" ? computerScore++ : humanScore++;
 }
 
+// For every round, gets computer and human choices, plays round, updates score
 function playGame() {
     let maxRounds = 5;
 
