@@ -14,37 +14,34 @@ function getHumanChoice() {
     return prompt("Your choice: ", "Rock").toLowerCase();
 }
 
-function playRound(n) {
-    console.log(`Playing round ${n}...`);
-    
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
-
-    console.log(`Human choice: ${humanChoice}`);
-    console.log(`Computer choice: ${computerChoice}`);
-
-    if (humanChoice === computerChoice) {
-        console.log("It's a draw!");
+function playRound(n, humanChoice, computerChoice) {
+    if (humanChoice === computerChoice)
         return;
-    }
-    else if (humanChoice === "rock") {
+    else if (humanChoice === "rock")
         computerChoice === "paper" ? computerScore++ : humanScore++;        
-    } else if (humanChoice === "paper") {
+    else if (humanChoice === "paper")
         computerChoice === "scissors" ? computerScore++ : humanScore++;
-    } else if (humanChoice === "scissors") {
+    else if (humanChoice === "scissors")
         computerChoice === "rock" ? computerScore++ : humanScore++;
-    }
-
-    console.log(`Current score:
-        Human: ${humanScore}
-        Computer: ${computerScore}`);
 }
 
 function playGame() {
     let maxRounds = 5;
 
     for (i = 1; i <= maxRounds; i++) {
-        playRound(i);
+        console.log(`Playing round ${i}...`);
+
+        let humanChoice = getHumanChoice();
+        console.log(`Human choice: ${humanChoice}`);
+
+        let computerChoice = getComputerChoice();
+        console.log(`Computer choice: ${computerChoice}`);
+
+        playRound(i, humanChoice, computerChoice);
+
+        console.log(`Current score:
+        Human: ${humanScore}
+        Computer: ${computerScore}`);
     }
 }
 
