@@ -1,7 +1,3 @@
-function init() {
-
-}
-
 // Helper function to get a random int in a 1-max range
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -22,11 +18,10 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    roundResult.textContent = `Your choice: ${humanChoice}\nComputer choice: ${computerChoice}\n`;
-    if (humanChoice === computerChoice) {
-        roundResult.textContent += "\nIt's a draw!"
+    roundResult.innerHTML = `Your choice: ${humanChoice} <br>
+                               Computer choice: ${computerChoice} <br>`;
+    if (humanChoice === computerChoice)
         return;
-    }
     else if (humanChoice === "rock")
         computerChoice === "paper" ? computerScore++ : humanScore++;        
     else if (humanChoice === "paper")
@@ -44,6 +39,9 @@ function checkWinner() {
         let gameOverMessage = document.createElement("h3");
         gameOverMessage.textContent = `Game over! You ${humanScore > computerScore ? "win" : "lose"}!`;
         document.querySelector("body").appendChild(gameOverMessage);
+
+        for (const btn of buttonsArray)
+            btn.disabled = true;
     }
 }
 
