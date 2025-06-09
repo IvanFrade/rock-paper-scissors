@@ -1,3 +1,7 @@
+function init() {
+    
+}
+
 // Helper function to get a random int in a 1-max range
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -28,10 +32,32 @@ function playRound(humanChoice, computerChoice) {
         computerChoice === "scissors" ? computerScore++ : humanScore++;
     else if (humanChoice === "scissors")
         computerChoice === "rock" ? computerScore++ : humanScore++;    
+
+    humanScoreText.textContent = `Your score: ${humanScore}`;
+    computerScoreText.textContent = `Computer score: ${computerScore}`;
+    checkWinner();
+}
+
+function checkWinner() {
+    if (humanScore === 5 || computerScore === 5) {
+        let gameOverMessage = document.createElement("h3");
+        gameOverMessage.textContent = `Game over! You ${humanScore > computerScore ? "win" : "lose"}!`;
+        document.querySelector("body").appendChild(gameOverMessage);
+    }
 }
 
 let computerScore = 0;
 let humanScore = 0;
+
+const resultsContainer = document.querySelector("#results");
+
+const humanScoreText = document.createElement("p");
+humanScoreText.textContent = `Your score: ${humanScore}`;
+const computerScoreText = document.createElement("p");
+computerScoreText.textContent = `Computer score: ${computerScore}`;
+
+resultsContainer.appendChild(humanScoreText);
+resultsContainer.appendChild(computerScoreText);
 
 const buttons = document.querySelectorAll("button");
 const buttonsArray = [...buttons];
@@ -39,10 +65,3 @@ for (const btn of buttonsArray)
     btn.addEventListener("click", () => { 
         playRound(btn.textContent.toLowerCase(), getComputerChoice());
     });
-
-if (humanScore > computerScore)
-    console.log("Game over. You win!");
-else if (humanScore < computerScore)
-    console.log("Game over. You lose!");
-else  
-    console.log("Game over. It's a draw...");
