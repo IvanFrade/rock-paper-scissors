@@ -1,5 +1,5 @@
 function init() {
-    
+
 }
 
 // Helper function to get a random int in a 1-max range
@@ -22,10 +22,11 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    console.log(`Human choice: ${humanChoice} - Computer choice: ${computerChoice}`);
-
-    if (humanChoice === computerChoice)
+    roundResult.textContent = `Your choice: ${humanChoice}\nComputer choice: ${computerChoice}\n`;
+    if (humanChoice === computerChoice) {
+        roundResult.textContent += "\nIt's a draw!"
         return;
+    }
     else if (humanChoice === "rock")
         computerChoice === "paper" ? computerScore++ : humanScore++;        
     else if (humanChoice === "paper")
@@ -50,6 +51,7 @@ let computerScore = 0;
 let humanScore = 0;
 
 const resultsContainer = document.querySelector("#results");
+const roundResult = document.querySelector("#roundResult")
 
 const humanScoreText = document.createElement("p");
 humanScoreText.textContent = `Your score: ${humanScore}`;
