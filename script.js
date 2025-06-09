@@ -18,6 +18,8 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+    console.log(`Human choice: ${humanChoice} - Computer choice: ${computerChoice}`);
+
     if (humanChoice === computerChoice)
         return;
     else if (humanChoice === "rock")
@@ -25,34 +27,18 @@ function playRound(humanChoice, computerChoice) {
     else if (humanChoice === "paper")
         computerChoice === "scissors" ? computerScore++ : humanScore++;
     else if (humanChoice === "scissors")
-        computerChoice === "rock" ? computerScore++ : humanScore++;
-}
-
-// For every round, gets computer and human choices, plays round, updates score
-function playGame() {
-    let maxRounds = 5;
-
-    for (i = 1; i <= maxRounds; i++) {
-        console.log(`Playing round ${i}...`);
-
-        let humanChoice = getHumanChoice();
-        console.log(`Human choice: ${humanChoice}`);
-
-        let computerChoice = getComputerChoice();
-        console.log(`Computer choice: ${computerChoice}`);
-
-        playRound(humanChoice, computerChoice);
-
-        console.log(`Current score:
-        Human: ${humanScore}
-        Computer: ${computerScore}`);
-    }
+        computerChoice === "rock" ? computerScore++ : humanScore++;    
 }
 
 let computerScore = 0;
 let humanScore = 0;
 
-playGame();
+const buttons = document.querySelectorAll("button");
+const buttonsArray = [...buttons];
+for (const btn of buttonsArray)
+    btn.addEventListener("click", () => { 
+        playRound(btn.textContent.toLowerCase(), getComputerChoice());
+    });
 
 if (humanScore > computerScore)
     console.log("Game over. You win!");
